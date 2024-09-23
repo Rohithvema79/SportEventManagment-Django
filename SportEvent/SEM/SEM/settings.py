@@ -114,7 +114,7 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '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')
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', 'Your API key')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
