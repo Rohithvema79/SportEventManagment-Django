@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Sporty</title>
+    <style>
+        /* Basic styles for the website */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #9f8bb5;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        /* Header styling */
+        header {
+            background-color: #514A9D; /* Updated color */
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+        /* Navbar styling */
+        nav {
+            background-color: #6C63A6; /* Updated to match theme */
+            padding: 10px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            border: 2px solid white;
+            border-radius: 8px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: white;
+            color: #6C63A6;
+            border-color: #6C63A6;
+        }
+        /* Section styling */
+        section {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 20px;
+            animation: scroll 2s ease-in-out;
+        }
+        @keyframes scroll {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Section item styling with hover enlarge effect */
+        .section-item {
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 18px;
+            width: 30%;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: float 3s ease-in-out infinite;
+        }
+        /* Hover effect - Enlarge and shadow */
+        .section-item:hover {
+            transform: scale(1.05); /* Enlarges section on hover */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        /* Image styling */
+        .section-item img {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+        /* Footer styling */
+        footer {
+            background-color: #514A9D; /* Updated color */
+            color: white;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        Welcome to Sporty
+    </header>
+
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="#">Sport Event</a></li>
+            <li><a href="#">Live Updates</a></li>
+            <li><a href="{% url 'chatbot_index' %}">Chat Bot</a></li>
+            <li><a href="{% url 'signin' %}">Login</a></li>
+            <li><a href="{% url 'signup' %}">Register</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Sections -->
+    <section>
+        <!-- Event Section -->
+        <div class="section-item">
+            <h2>Events</h2>
+            <a href="#"><img src="https://via.placeholder.com/300x200.png?text=Event" alt="Event"></a>
+        </div>
+
+        <!-- Live Updates Section -->
+        <div class="section-item">
+            <h2>Live Updates</h2>
+            <a href="#"><img src="https://via.placeholder.com/300x200.png?text=Live+Updates" alt="Live Updates"></a>
+        </div>
+
+        <!-- Chat Section -->
+        <div class="section-item">
+            <h2>Chat with Us</h2>
+            <a href=""><img src="https://via.placeholder.com/300x200.png?text=Chat+with+Us" alt="Chat"></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        © 2024 Sporty. All rights reserved.
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    nav {
+            background-color: #6C63A6; /* Updated to match theme */
+            padding: 10px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            border: 2px solid white;
+            border-radius: 8px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: white;
+            color: #6C63A6;
+            border-color: #6C63A6;
+        }
+  </style>
+</head>
+<body>
+<nav>
+        <ul>
+            <li><a href="#">Sport Event</a></li>
+            <li><a href="#">Live Updates</a></li>
+            <li><a href="{% url 'chatbot_index' %}">Chat Bot</a></li>
+            <li><a href="{% url 'signup' %}">Login</a></li>
+            <li><a href="{% url 'signin' %}">Register</a></li>
+        </ul>
+    </nav>
+{% block body %}
+{% endblock %}
+</body>
+</html>

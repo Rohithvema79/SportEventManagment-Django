@@ -1,0 +1,115 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        /* Basic styles for the chatbot UI */
+        .chatbot {
+            width: 700px;
+            border: 20px solid #f9f9f9;
+            padding: 200px;
+           margin: auto;
+            background-color: #f9f9f9;
+
+        }
+
+        #chatbox {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+
+        }
+
+        #chatlog {
+            border: 1px solid #f9f9f9;
+            padding: 10px;
+            height: 200px;
+            overflow-y: scroll;
+            background-color: #fff;
+        }
+
+        #userInput {
+            margin-top: 10px;
+            padding: 8px;
+            width: calc(100% - 20px);
+
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 8px;
+            background-color: #C7C5F4;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4C489D;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chatbot">
+        <div id="chatbox">
+            <div id="chatlog"></div>
+            <input type="text" id="userInput" placeholder="Prompt here.." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('userInput').value;
+            const chatlog = document.getElementById('chatlog');
+
+            // Append the user's message to the chatlog
+            chatlog.innerHTML += `<div><b>You:</b> ${userInput}</div>`;
+
+            // Send user message to the backend chatbot API
+            fetch('/chatbot/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')  // Get CSRF token for Django
+                },
+                body: JSON.stringify({ message: userInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const botReply = data.reply || 'Sorry, there was an error.';
+                // Append the bot's reply to the chatlog
+                chatlog.innerHTML += `<div><b>Bot:</b> ${botReply}</div>`;
+                chatlog.scrollTop = chatlog.scrollHeight; // Scroll to bottom
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                chatlog.innerHTML += `<div><b>Bot:</b> There was an error processing your request.</div>`;
+            });
+
+            // Clear the input field
+            document.getElementById('userInput').value = "";
+        }
+
+        // Function to get CSRF token (required by Django)
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+
+</body>
+</html>
