@@ -12,4 +12,4 @@ def chatbot_view(request):
 
 
 def chatbot_index(request):
-    return render(request, 'chatbotapp/index.html')
+    return render(request, 'chatbotapp:index.html')
