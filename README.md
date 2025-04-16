@@ -42,13 +42,18 @@ Contributing
 
 As this is an Open Source Project, we welcome contributions!
 Feel free to fork the repository, raise issues, and submit pull requests for new features or bug fixes. Use our project as a base or reference for your own event platforms.
-Acknowledgements
 
-👥 Contributors
 
-    Rohith Vema
 
-    Mohan
+Acknowledgements:
+
+    Contributors:-
+
+    1.Rohith Vema
+
+    2.Mohan
+
+    3.Avinash
 
 💻 Built With
 
